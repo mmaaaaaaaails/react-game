@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = () => {
   return (
-    <h1>react-game</h1>
+    <h1>react-game start</h1>
   )
 }
 
