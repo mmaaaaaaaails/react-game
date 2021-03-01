@@ -1,0 +1,66 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+
+.footer__author {
+    padding-top: 11px;
+}
+
+.footer__info {
+    text-decoration: none;
+    color: black;
+    transition: all ease 0.8s;
+}
+
+.footer__info:hover {
+    color: salmon;
+    transition: all ease 0.8s;
+}
+
+.footer__icon {
+    background-image: url(../../image/git.svg);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.footer__icon:hover {
+    animation: swing .9s ease;
+    animation-iteration-count: 1;
+    cursor: pointer;
+}
+
+@keyframes swing {
+
+    15% {
+        transform: translateX(9px);
+    }
+
+    30% {
+        transform: translateX(-9px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    50% {
+        transform: translateX(-6px);
+    }
+
+    65% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

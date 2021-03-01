@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
+import Footer from './components/Footer/Footer';
 import Title from "./components/Title";
 import CalculateWinner from "./components/CalculateWinner";
 import Board from "./components/Board";
@@ -136,6 +137,7 @@ class App extends React.Component {
                     {this.makeRow([3, 4, 5])}
                     {this.makeRow([6, 7, 8])}
                 </Board>
+                <Footer/>
             </div>
         );
     }
