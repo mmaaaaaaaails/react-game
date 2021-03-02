@@ -137,7 +137,9 @@ class App extends React.Component {
                     {this.makeRow([3, 4, 5])}
                     {this.makeRow([6, 7, 8])}
                 </Board>
-                <Footer/>
+                <Footer>
+
+                </Footer>
             </div>
         );
     }

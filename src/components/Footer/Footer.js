@@ -1,5 +1,6 @@
 import React from 'react';
-import './Footer.css'
+import './Footer.css';
+import Sound from '../Sound';
 
 class Footer extends React.Component {
     render() {
@@ -10,6 +11,7 @@ class Footer extends React.Component {
                         <a href="https://rs.school/react/" className="footer__info">RS School 2021 Q1</a>
                         <span className="footer__icon"></span>
                     </div>
+                    <Sound />
                     <div className="footer__author">
                         <a href="https://github.com/mmaaaaaaaails" className="footer__info">Vadim Dudko</a>
                     </div>
