@@ -38,7 +38,7 @@ const Box = styled.div`
     }
 `;
 
-const T = ({ fadeOut, draw, winner, gameOver, active }) => {
+const Result = ({ fadeOut, draw, winner, gameOver, active }) => {
     let Player = active ? PlayerSquare : PlayerSquare;
     if (gameOver) Player = PlayerSquare;
     if (winner) Player = PlayerWinner;
@@ -56,7 +56,7 @@ const Square = ({
     gameOver,
     handleClick,
 }) => {
-    const Player = T({ fadeOut, draw, winner, active, gameOver });
+    const Player = Result({ fadeOut, draw, winner, active, gameOver });
     return (
         <Box onClick={() => handleClick(id)}>
             <Player color={active} delay={id * 0.05}>

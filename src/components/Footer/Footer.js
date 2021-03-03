@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
 import Sound from '../Sound';
-
 class Footer extends React.Component {
     render() {
         return (

@@ -10,6 +10,10 @@ import { WinnerIn, WinnerOut } from "./components/Winner";
 import Button from "./components/Button";
 import Squares from "./components/Squares";
 import "./App.css";
+import click from './audio/click.wav';
+import win from './audio/winner.wav';
+import draw from './audio/draw.wav';
+
 
 const defaultState = {
     squares: [null, null, null, null, null, null, null, null, null],
@@ -74,6 +78,12 @@ class App extends React.Component {
             return;
         }
 
+        if (this.state.squares) {
+            const audio = new Audio(click);
+            audio.play();
+            audio.currentTime = 0;
+        }
+
         const figure = document.body.classList;
         const gamer = this.state.moves % 2 ? "O" : "X";
         const s = updateSquares(id, gamer)(this.state);
@@ -84,8 +94,17 @@ class App extends React.Component {
         this.setState(s, () => {
             if (this.state.gameOver) {
                 resetBack();
+                const audio = new Audio(win);
+                audio.play();
+                audio.currentTime = 0;
                 figure.add(gamer === "X" ? "gamerOne" : "gamerTwo");
                 return;
+            }
+
+            if (this.state.moves > 8) {
+                const audio = new Audio(draw);
+                audio.play();
+                audio.currentTime = 0;
             }
 
             if (gamer === "X") {
@@ -138,7 +157,6 @@ class App extends React.Component {
                     {this.makeRow([6, 7, 8])}
                 </Board>
                 <Footer>
-
                 </Footer>
             </div>
         );
