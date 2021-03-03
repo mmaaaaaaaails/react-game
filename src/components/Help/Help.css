@@ -1,0 +1,28 @@
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    transition: all ease .5s;
+    cursor: pointer;
+    margin-top: 23px;
+    margin-left: 25px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: mediumslateblue;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    transition: all ease .5s;
+}

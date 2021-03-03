@@ -12,6 +12,15 @@ class Sound extends React.Component {
 
     audio = new Audio(song)
 
+    componentDidMount() {
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && e.code === 'KeyX') {
+                console.log('5')
+                return this.play()
+            }
+        });
+    }
+
     play = () => {
         if (this.state.play) {
             this.setState({

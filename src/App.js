@@ -13,7 +13,7 @@ import "./App.css";
 import click from './audio/click.wav';
 import win from './audio/winner.wav';
 import draw from './audio/draw.wav';
-
+import Help from './components/Help/Help';
 
 const defaultState = {
     squares: [null, null, null, null, null, null, null, null, null],
@@ -41,6 +41,7 @@ const resetBack = () => {
     document.body.classList.remove("gamerOne", "gamerTwo");
 };
 class App extends React.Component {
+
     state = {
         ...defaultState,
     };
@@ -54,6 +55,30 @@ class App extends React.Component {
             this.setState(defaultState);
         }, 800);
     };
+
+    componentDidMount() {
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && e.code === 'KeyA') {
+                return this.restart()
+            }
+
+            if (e.altKey && e.code === 'KeyS') {
+                const url = 'https://github.com/mmaaaaaaaails';
+                window.open(url, '_blank');
+            }
+
+            if (e.altKey && e.code === 'KeyD') {
+                const url = 'https://rs.school/react/';
+                window.open(url, '_blank');
+            }
+
+            if (e.altKey && e.code === 'KeyZ') {
+                this.setState({
+                    moves: 0,
+                });
+            }
+        });
+    }
 
     endGame = (winner, moves) => {
         if (winner) {
@@ -148,6 +173,7 @@ class App extends React.Component {
             <div className="app">
                 <Header>
                     <Button>{this.state.moves} moves</Button>
+                    <Help />
                     {this.endGame(this.state.gameOver, this.state.moves)}
                     <Button onClick={this.restart}>Restart</Button>
                 </Header>

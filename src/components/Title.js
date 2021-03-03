@@ -7,6 +7,7 @@ const Title = styled.h1`
     flex: 1 1 auto;
     font-weight: 700;
     text-align: center;
+    color: cadetblue;
 `;
 
 export default Title;

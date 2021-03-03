@@ -7,6 +7,7 @@ const Button = styled.span`
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     transition: all ease 0.5s;
+    color: mediumslateblue;
     &:hover {
         color: salmon;
         transition: all ease 0.8s;
