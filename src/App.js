@@ -5,22 +5,29 @@ import Title from "./components/Title";
 import CalculateWinner from "./components/CalculateWinner";
 import Board from "./components/Board";
 import Row from "./components/Row";
-import { DrawIn, DrawOut } from "./components/Draw";
-import { WinnerIn, WinnerOut } from "./components/Winner";
 import Button from "./components/Button";
 import Squares from "./components/Squares";
-import "./App.css";
 import click from './audio/click.wav';
 import win from './audio/winner.wav';
 import draw from './audio/draw.wav';
 import Help from './components/Help/Help';
+import Fullscreen from 'react-fullscreen-crossbrowser';
+import { DrawIn, DrawOut } from "./components/Draw";
+import { WinnerIn, WinnerOut } from "./components/Winner";
+import "./App.css";
 
 const defaultState = {
-    squares: [null, null, null, null, null, null, null, null, null],
-    moves: 0,
+    squares: JSON.parse(sessionStorage.getItem('squares')),
+    moves: JSON.parse(sessionStorage.getItem('moves')),
     restart: false,
     gameOver: null,
+    isFullscreenEnabled: false
 };
+
+if (!sessionStorage.getItem('squares')) {
+    defaultState.squares = [null, null, null, null, null, null, null, null, null]
+    defaultState.moves = 0
+}
 
 const updateSquares = (id, value) => {
     return (state) => {
@@ -37,6 +44,7 @@ const updateSquares = (id, value) => {
     };
 };
 
+
 const resetBack = () => {
     document.body.classList.remove("gamerOne", "gamerTwo");
 };
@@ -46,15 +54,10 @@ class App extends React.Component {
         ...defaultState,
     };
 
-    restart = () => {
-        this.setState({
-            restart: true,
-        });
-        resetBack();
-        setTimeout(() => {
-            this.setState(defaultState);
-        }, 800);
-    };
+    componentDidUpdate() {
+        sessionStorage.setItem('squares', JSON.stringify(this.state.squares))
+        sessionStorage.setItem('moves', JSON.stringify(this.state.moves))
+    }
 
     componentDidMount() {
         document.addEventListener('keydown', (e) => {
@@ -74,11 +77,16 @@ class App extends React.Component {
 
             if (e.altKey && e.code === 'KeyZ') {
                 this.setState({
-                    moves: 0,
+                    isFullscreenEnabled: true
                 });
             }
         });
     }
+
+    restart = () => {
+        sessionStorage.clear()
+        window.location.reload()
+    };
 
     endGame = (winner, moves) => {
         if (winner) {
@@ -122,6 +130,9 @@ class App extends React.Component {
                 const audio = new Audio(win);
                 audio.play();
                 audio.currentTime = 0;
+                setTimeout(() => {
+                    this.restart()
+                }, 2000)
                 figure.add(gamer === "X" ? "gamerOne" : "gamerTwo");
                 return;
             }
@@ -130,6 +141,9 @@ class App extends React.Component {
                 const audio = new Audio(draw);
                 audio.play();
                 audio.currentTime = 0;
+                setTimeout(() => {
+                    this.restart()
+                }, 2000)
             }
 
             if (gamer === "X") {
@@ -170,21 +184,27 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="app">
-                <Header>
-                    <Button>{this.state.moves} moves</Button>
-                    <Help />
-                    {this.endGame(this.state.gameOver, this.state.moves)}
-                    <Button onClick={this.restart}>Restart</Button>
-                </Header>
-                <Board>
-                    {this.makeRow([0, 1, 2])}
-                    {this.makeRow([3, 4, 5])}
-                    {this.makeRow([6, 7, 8])}
-                </Board>
-                <Footer>
-                </Footer>
-            </div>
+            <React.Fragment>
+                <Fullscreen enabled={this.state.isFullscreenEnabled}>
+                    <div className="app">
+                        <Header>
+                            <Button>{this.state.moves} moves</Button>
+                            <div onClick={() => this.setState({isFullscreenEnabled: true})} className="fullScreen">
+                                <i className="fas fa-expand-arrows-alt fa-2x"></i>
+                            </div>
+                            <Help />
+                            {this.endGame(this.state.gameOver, this.state.moves)}
+                            <Button onClick={this.restart}>Restart</Button>
+                        </Header>
+                        <Board>
+                            {this.makeRow([0, 1, 2])}
+                            {this.makeRow([3, 4, 5])}
+                            {this.makeRow([6, 7, 8])}
+                        </Board>
+                        <Footer />
+                    </div>
+                </Fullscreen>
+            </React.Fragment>
         );
     }
 }

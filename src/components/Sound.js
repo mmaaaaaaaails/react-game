@@ -1,6 +1,9 @@
 import React from "react";
 import song from '../audio/nadia.mp3'
 
+const iconStyle = {
+    cursor: 'pointer'
+}
 class Sound extends React.Component {
     constructor(props) {
         super(props)
@@ -38,7 +41,7 @@ class Sound extends React.Component {
     render() {
         return (
             <div>
-                <div onClick={this.play} className={!this.state.play ? 'fas fa-play fa-2x' : 'fas fa-stop fa-2x'} ></div>
+                <div onClick={this.play} style={iconStyle} className={!this.state.play ? 'fas fa-play fa-2x' : 'fas fa-stop fa-2x'} ></div>
             </div>
         );
     }

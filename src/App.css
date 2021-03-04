@@ -1,5 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .app {
     height: 100vh;
     background-image: url(./image/cell.jpg);
     background-size: contain;
+}
+
+.fullScreen:hover {
+    cursor: pointer
 }

@@ -4,8 +4,6 @@
     display: inline-block;
     transition: all ease .5s;
     cursor: pointer;
-    margin-top: 23px;
-    margin-left: 25px;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
 }

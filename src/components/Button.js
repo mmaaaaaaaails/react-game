@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-const Button = styled.span`
+const Button = styled.p`
     font-size: 1rem;
     cursor: pointer;
-    line-height: 5rem;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     transition: all ease 0.5s;
