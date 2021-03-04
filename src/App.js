@@ -185,13 +185,14 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Fullscreen enabled={this.state.isFullscreenEnabled}>
+                <Fullscreen enabled={this.state.isFullscreenEnabled}
+                            onChange={isFullscreenEnabled => this.setState({isFullscreenEnabled})}>
                     <div className="app">
                         <Header>
                             <Button>{this.state.moves} moves</Button>
-                            <div onClick={() => this.setState({isFullscreenEnabled: true})} className="fullScreen">
+                            <span onClick={() => this.setState({isFullscreenEnabled: true})} className="fullScreen">
                                 <i className="fas fa-expand-arrows-alt fa-2x"></i>
-                            </div>
+                            </span>
                             <Help />
                             {this.endGame(this.state.gameOver, this.state.moves)}
                             <Button onClick={this.restart}>Restart</Button>

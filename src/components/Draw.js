@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components";
 import { flipInY, flipOutY } from "react-animations";
 
 const Draw = styled.h1`
-    flex: 1 1 auto;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     text-align: center;

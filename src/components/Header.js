@@ -6,6 +6,5 @@ const Header = styled.div`
     width: 480px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
 `;
 export default Header;
