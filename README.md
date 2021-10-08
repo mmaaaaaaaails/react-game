@@ -2,6 +2,7 @@
 
 ### Deploy: [react-game](https://mmaaaaaaaails-react-game.netlify.app/#/)
 
+```
 git clone https://github.com/mmaaaaaaaails/react-game.git
 
 # Go to the app:
